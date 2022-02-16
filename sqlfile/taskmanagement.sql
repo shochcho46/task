@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2022 at 07:55 PM
+-- Generation Time: Feb 16, 2022 at 10:29 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -124,7 +124,13 @@ INSERT INTO `assigntasks` (`id`, `user_id`, `project_id`, `task_id`, `status`, `
 (92, 2, '14', '14', '0', '2022-02-05 18:53:40', '2022-02-05 18:53:40'),
 (93, 2, '14', '15', '0', '2022-02-05 18:53:40', '2022-02-05 18:53:40'),
 (94, 2, '14', '16', '0', '2022-02-05 18:53:40', '2022-02-05 18:53:40'),
-(95, 2, '14', '17', '0', '2022-02-05 18:53:40', '2022-02-05 18:53:40');
+(95, 2, '14', '17', '0', '2022-02-05 18:53:40', '2022-02-05 18:53:40'),
+(103, 6, '8', '10', '0', '2022-02-15 21:04:30', '2022-02-15 21:04:30'),
+(104, 6, '8', '11', '0', '2022-02-15 21:04:30', '2022-02-15 21:04:30'),
+(105, 6, '8', '12', '0', '2022-02-15 21:04:30', '2022-02-15 21:04:30'),
+(106, 7, '8', '7', '0', '2022-02-15 21:04:52', '2022-02-15 21:04:52'),
+(107, 7, '8', '8', '0', '2022-02-15 21:04:52', '2022-02-15 21:04:52'),
+(108, 7, '8', '9', '0', '2022-02-15 21:04:52', '2022-02-15 21:04:52');
 
 -- --------------------------------------------------------
 
@@ -271,9 +277,9 @@ INSERT INTO `projects` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (9, 'ঘর  8', '2022-01-24 13:16:07', '2022-02-05 17:40:59'),
 (10, 'ঘর  9', '2022-01-24 13:16:11', '2022-02-05 17:40:53'),
 (11, 'ঘর  10', '2022-01-24 13:16:15', '2022-02-05 17:40:48'),
-(12, 'ঘর  11', '2022-01-24 13:16:20', '2022-02-05 17:40:41'),
 (13, 'ঘর  12', '2022-01-24 13:16:24', '2022-02-05 17:40:35'),
-(14, 'ঘর 13', '2022-01-24 13:16:28', '2022-02-05 17:36:18');
+(14, 'ঘর  14', '2022-01-24 13:16:28', '2022-02-11 21:38:12'),
+(17, 'ঘর  16', '2022-02-11 15:09:10', '2022-02-11 15:09:10');
 
 -- --------------------------------------------------------
 
@@ -316,7 +322,7 @@ INSERT INTO `tasks` (`id`, `detail`, `created_at`, `updated_at`) VALUES
 (7, 'গ্রেড বিম ঢালাই', '2022-01-24 13:12:47', '2022-02-05 18:01:52'),
 (8, 'জালানা পর্যন্ত গাঁথুনি', '2022-01-24 13:12:55', '2022-02-05 18:02:08'),
 (9, 'বারান্দার পিলার তৈরি', '2022-01-24 13:13:03', '2022-02-05 18:02:27'),
-(10, 'লিন্টেল পর্যন্ত গাঁথুনি', '2022-01-24 13:13:10', '2022-02-05 18:02:41'),
+(10, 'রং করণ', '2022-01-24 13:13:10', '2022-02-11 21:52:59'),
 (11, 'লিন্টেল সম্পন্ন', '2022-01-24 13:13:16', '2022-02-05 18:02:56'),
 (12, 'সম্পন্ন সাইট দেয়াল', '2022-01-24 13:13:20', '2022-02-05 18:03:29'),
 (13, 'আলকাতরাসহ টিন লাগানো', '2022-01-24 13:13:26', '2022-02-05 18:03:42'),
@@ -356,7 +362,10 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `mobile`, `pass
 (2, 'User1', 'u@u1.com', NULL, '11111111111', '$2y$10$2KiAwVxg004ckXp8RjIAS.bXhMVx0QatWL4csKerhbO23j/dXBHZ.', NULL, NULL, 'subadmin', 'active', NULL, '2022-01-24 13:21:14', '2022-01-24 13:21:14'),
 (3, 'User2', 'u@u2.com', NULL, '22222222222', '$2y$10$SRwUc3dw58HmY6mE3DxTEubBwxvrGxcS3gS.oqtCt5lNNF8zXDFTC', NULL, NULL, 'subadmin', 'active', NULL, '2022-01-24 13:21:50', '2022-01-24 13:21:50'),
 (4, 'User3', 'u@u3.com', NULL, '33333333333', '$2y$10$U6PHoUwKU53Mz6.iZhGnc.3zpg3g59zroRM4EpIUao2lT3GDcyBSS', NULL, NULL, 'subadmin', 'active', NULL, '2022-01-24 13:22:30', '2022-01-24 13:22:30'),
-(5, 'Admin', 'a@a.com', NULL, '99999999999', '$2y$10$SO1W1vdDNNLUK.N0kAbb2ejfgxqisfzgCJUzP6AVhoPoaE/Tx2M7W', NULL, NULL, 'admin', 'active', NULL, '2022-02-05 18:49:05', '2022-02-05 18:49:05');
+(5, 'Admin', 'a@a.com', NULL, '99999999999', '$2y$10$SO1W1vdDNNLUK.N0kAbb2ejfgxqisfzgCJUzP6AVhoPoaE/Tx2M7W', NULL, NULL, 'admin', 'active', NULL, '2022-02-05 18:49:05', '2022-02-05 18:49:05'),
+(6, 'test', 't@t.com', NULL, '78965412', '$2y$10$Rb6Uo0tPAGS1c2ckSIk93.qGDBNTcyy9pIk2t40KmsLRbuhd9pSMe', NULL, NULL, 'subadmin', 'active', NULL, '2022-02-08 20:17:02', '2022-02-08 20:17:02'),
+(7, 'test', 't@t1.com', NULL, '789654125', '$2y$10$jYcIES8JvLQlUxmz2e053enmq6Yx4E6/GbiE..guGc5Vs3mx/o2wW', NULL, NULL, 'subadmin', 'active', NULL, '2022-02-08 20:39:20', '2022-02-15 20:25:24'),
+(8, 'api user', 'ap@a.com', NULL, '69355555', '$2y$10$ecOw2MVHRwTLPfzg/eVIyeSmDy7NOK7n61ta.L9Ya/HE4z.QnBqDm', NULL, NULL, 'admin', 'active', NULL, '2022-02-11 22:41:02', '2022-02-11 22:41:02');
 
 --
 -- Indexes for dumped tables
@@ -444,7 +453,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `assigntasks`
 --
 ALTER TABLE `assigntasks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -480,7 +489,7 @@ ALTER TABLE `profiles`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `submenus`
@@ -492,13 +501,13 @@ ALTER TABLE `submenus`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables

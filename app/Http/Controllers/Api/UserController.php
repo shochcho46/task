@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -146,7 +148,52 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'type' => 'required',
+            'mobile' => 'required|unique:users',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8|confirmed',
+
+        ], );
+
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Error in validation',
+                'status' => $validator->errors(),
+                'response' => 404,
+
+            ]);
+        } else {
+            $returntype = $this->checkUserType();
+
+            if ($returntype) {
+
+                $data['name'] = $request->name;
+                $data['type'] = $request->type;
+                $data['mobile'] = $request->mobile;
+                $data['email'] = $request->email;
+                $data['password'] = Hash::make($request->password);
+
+                User::create($data);
+
+                return response()->json([
+                    'message' => 'Data save',
+                    'status' => 'success',
+                    'response' => 201,
+                    'access_token' => request()->bearerToken(),
+                    'data' => $data,
+
+                ]);
+
+            } else {
+                return response()->json([
+                    'message' => "Don't have permission",
+                    'status' => 'fail',
+                    'response' => 404,
+                ]);
+            }
+        }
     }
 
     /**
@@ -192,5 +239,65 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function resetpassword(Request $request, User $user)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|min:8|confirmed',
+        ],
+            [
+                'password.required' => 'Password cannot be Empty',
+            ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Error in validation',
+                'status' => $validator->errors(),
+                'response' => 404,
+                'response' => $request->all(),
+
+            ]);
+        } else {
+            $returntype = $this->checkUserType();
+
+            if ($returntype) {
+
+                $data['password'] = Hash::make($request->password);
+
+                $user->update($data);
+
+                return response()->json([
+                    'message' => 'Data Update',
+                    'status' => 'success',
+                    'response' => 201,
+                    'access_token' => request()->bearerToken(),
+
+                ]);
+
+            } else {
+                return response()->json([
+                    'message' => "Don't have permission",
+                    'status' => 'fail',
+                    'response' => 404,
+                ]);
+            }
+        }
+    }
+
+    public function checkUserType()
+    {
+        $type = Auth::guard('api')->user()->type;
+
+        if ($type == "subadmin") {
+
+            return false;
+
+        } elseif (($type == "admin") || $type == "superadmin") {
+            return true;
+
+        }
+
     }
 }
